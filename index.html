@@ -16,14 +16,21 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            display: flex;
+            align-items: center;  /* Vertically center the container */
+            justify-content: center;  /* Horizontally center the container */
         }
         .container {
             max-width: 600px;
+            width: 100%;  /* Ensures the container takes full width within the body */
             margin: 50px auto;
             padding: 30px;
             background: #f5ebe0;
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         h1 {
             font-size: 28px;
@@ -33,17 +40,19 @@
         }
         .link {
             display: flex;
-    align-items: center;  /* Vertically center the icon and text */
-    justify-content: center; /* Horizontally center the content inside the button */
-    margin: 20px 0;
-    padding: 15px;
-    text-decoration: none;
-    color: #544a46;
-    background: #d5bdaf;
-    border-radius: 30px;
-    font-size: 18px;
-    transition: all 0.3s;
-}
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 15px;
+            text-decoration: none;
+            color: #544a46;
+            background: #d5bdaf;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: all 0.3s;
+            width: 100%;  /* Make buttons stretch to fill available width */
+            max-width: 400px;  /* Optionally limit the width */
+        }
         .link:hover {
             background: #e3d5ca;
             transform: translateY(-3px);
