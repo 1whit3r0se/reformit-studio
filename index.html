@@ -9,54 +9,50 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        html {
-            scroll-behavior: smooth;
-            font-family: 'Georgia', serif;
-            text-align: center;
+        body, html {
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            height: calc(var(--vh, 1vh) * 100); /* Dynamically set height */
-            background-image: url('images/IMG-9d49ac5b1747120e4b440866c6243b5b-V.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Default for desktop */
-            background-repeat: no-repeat;
+            height: 100%;
+            font-family: 'Georgia', serif;
+            scroll-behavior: smooth;
         }
         
-        /* Fix for mobile browsers */
-        @media (max-width: 768px) {
-            html {
-                background-attachment: scroll; /* Avoid fixed background on mobile */
-            }
-        }        
-        /* body {
-            font-family: 'Georgia', serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            height: max-content;
+        .parallax {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('images/IMG-9d49ac5b1747120e4b440866c6243b5b-V.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        } */
+            z-index: -1; /* Ensure it stays behind the content */
+        }
+        
         .container {
+            position: relative;
             max-width: 600px;
             margin: 50px auto;
             padding: 30px;
-            background: rgba(165,165,165, 0.7);
+            background: rgba(165, 165, 165, 0.7);
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
+        
         h1 {
             font-size: 28px;
             margin-bottom: 30px;
             color: #544a46;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
+        
+        .divider {
+            width: 80%;
+            height: 1px;
+            background: #000000;
+            margin: 30px auto;
+        }
+        
         .link {
             display: flex;
             align-items: center;
@@ -70,16 +66,11 @@
             font-size: 18px;
             transition: all 0.3s;
         }
+        
         .link:hover {
             background: #cccccc;
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .divider {
-            width: 80%;
-            height: 1px;
-            background: #000000;
-            margin: 30px auto;
         }
         .social-icon {
             margin-right: 10px;
@@ -121,26 +112,28 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Добре дошли в <br> Reform It Studio!</h1>
-        <div class="divider"></div>
-        <a href="https://www.instagram.com/reformit.studio/?utm_source=ig_web_button_share_sheet" class="link" target="_blank">
-            <i class="fab fa-instagram social-icon"></i>
-            Instagram
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=61571177870054&locale=bg_BG" class="link" target="_blank">
-            <i class="fab fa-facebook social-icon"></i>
-            Facebook
-        </a>
-        <a href="https://cal.com/reform-it-studio/60-min-pilates?date=2025-01-21&month=2025-01" class="link" target="_blank">
-            <i class="fas fa-calendar social-icon"></i>
-            Запазете час
-        </a>
-        <a href="YOUR_SITE_URL" class="link" target="_blank">
-            <i class="fas fa-globe social-icon"></i>
-            Coming soon
-        </a>
-        <div class="divider"></div>
+       <div class="parallax"></div>
+        <div class="container">
+            <h1>Добре дошли в <br> Reform It Studio!</h1>
+            <div class="divider"></div>
+            <a href="https://www.instagram.com/reformit.studio/?utm_source=ig_web_button_share_sheet" class="link" target="_blank">
+                <i class="fab fa-instagram social-icon"></i>
+                Instagram
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61571177870054&locale=bg_BG" class="link" target="_blank">
+                <i class="fab fa-facebook social-icon"></i>
+                Facebook
+            </a>
+            <a href="https://cal.com/reform-it-studio/60-min-pilates?date=2025-01-21&month=2025-01" class="link" target="_blank">
+                <i class="fas fa-calendar social-icon"></i>
+                Запазете час
+            </a>
+            <a href="YOUR_SITE_URL" class="link" target="_blank">
+                <i class="fas fa-globe social-icon"></i>
+                Coming soon
+            </a>
+            <div class="divider"></div>
+        </div>
         <div class="location-widget">
             <a href="https://maps.app.goo.gl/5ia6WprhepGehJAa8" class="location-button" target="_blank">
                 <i class="fa-solid fa-map-location-dot social-icon"></i>
