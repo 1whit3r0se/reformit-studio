@@ -9,39 +9,29 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
+        html {
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Georgia', serif;
             text-align: center;
-            background-image: url('images/473445597_1005504841401803_4171655916964070494_n.jpg');
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            height: max-content;
+            background-image: url('images/IMG-9d49ac5b1747120e4b440866c6243b5b-V.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             background-repeat: no-repeat;
-            display: flex;
-            flex-direction: column;
-        }
-        .content-wrapper {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
         }
         .container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 50px auto;
             padding: 30px;
             background: rgba(165,165,165, 0.7);
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-        .extra-space {
-            height: 100vh;
         }
         h1 {
             font-size: 28px;
@@ -113,7 +103,6 @@
     </style>
 </head>
 <body>
-    <div class="content-wrapper">
     <div class="container">
         <h1>Добре дошли в <br> Reform It Studio!</h1>
         <div class="divider"></div>
@@ -153,7 +142,6 @@
             .bindPopup('Reform It Studio')
             .openPopup();
     </script>
-    </div>
 </body>
 </html>
 
