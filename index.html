@@ -21,8 +21,13 @@
             background-image: url('images/473445597_1005504841401803_4171655916964070494_n.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             background-repeat: no-repeat;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
         }
         .container {
             max-width: 600px;
