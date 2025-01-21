@@ -138,9 +138,22 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-        L.marker([42.698063, 23.351293]).addTo(map)
-            .bindPopup('Reform It Studio')
-            .openPopup();
+        
+        // Create a clickable marker
+        var marker = L.marker([42.698063, 23.351293]).addTo(map);
+        
+        // Add a popup to the marker
+        marker.bindPopup('Reform It Studio<br><a href="https://maps.app.goo.gl/5ia6WprhepGehJAa8" target="_blank">Open in Google Maps</a>');
+        
+        // Make the entire marker clickable
+        marker.on('click', function() {
+            window.open('https://maps.app.goo.gl/5ia6WprhepGehJAa8', '_blank');
+        });
+        
+        // Optional: Make the entire map clickable
+        map.on('click', function() {
+            window.open('https://maps.app.goo.gl/5ia6WprhepGehJAa8', '_blank');
+        });
     </script>
 </body>
 </html>
