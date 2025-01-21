@@ -16,18 +16,12 @@
             min-height: 100vh; /* Ensure the page always covers the full viewport height */
 
         }
-        
-        /* Fix for mobile browsers */
-        @media (max-width: 768px) {
-            body {
-                background-attachment: scroll; /* Avoid fixed background on mobile */
-            }
-        }        
+               
         body {
             font-family: 'Georgia', serif;
             text-align: center;
             margin: 0;
-            padding: 20px 0; /* Space at the top and bottom of the page */
+            padding: 50px 0; /* Space at the top and bottom of the page */
             min-height: 100vh;
             background-image: url('images/vecteezy_silhouette-shadow-of-leaves-on-a-white-background-blurred_27103293.jpg');
             background-size: cover;
@@ -35,11 +29,19 @@
             background-attachment: fixed; /* Default for desktop */
             background-repeat: no-repeat;        
         }
+
+                /* Fix for mobile browsers */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll; /* Avoid fixed background on mobile */
+            }
+        } 
+
         .container {
             max-width: 600px;
-            margin: 1px auto;
+            margin: 40px auto;
             padding: 20px;
-            background: rgb(240, 234, 210, 0.8);
+            background: rgb(227, 213, 202, 0.7);
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
