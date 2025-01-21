@@ -9,52 +9,44 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        html {
+        html,body {
             scroll-behavior: smooth;
-            font-family: 'Georgia', serif;
-            text-align: center;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            height: calc(var(--vh, 1vh) * 100); /* Dynamically set height */
-            background-image: url('images/vecteezy_silhouette-shadow-of-leaves-on-a-white-background-blurred_27103293.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Default for desktop */
-            background-repeat: no-repeat;
+            min-height: 100vh; /* Ensure the page always covers the full viewport height */
+
         }
         
         /* Fix for mobile browsers */
         @media (max-width: 768px) {
-            html {
+            body {
                 background-attachment: scroll; /* Avoid fixed background on mobile */
             }
         }        
-        /* body {
+        body {
             font-family: 'Georgia', serif;
             text-align: center;
             margin: 0;
-            padding: 0;
+            padding: 50px 0; /* Space at the top and bottom of the page */
             min-height: 100vh;
-            height: max-content;
-            background-image: url('images/IMG-9d49ac5b1747120e4b440866c6243b5b-V.jpg');
+            background-image: url('images/vecteezy_silhouette-shadow-of-leaves-on-a-white-background-blurred_27103293.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        } */
+            background-attachment: fixed; /* Default for desktop */
+            background-repeat: no-repeat;        
+        }
         .container {
             max-width: 600px;
             margin: 50px auto;
             padding: 30px;
-            background: rgba(165,165,165, 0.7);
+            background: rgb(227, 213, 202, 0.7);
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
         h1 {
             font-size: 28px;
             margin-bottom: 30px;
-            color: #544a46;
+            color: #2f3e46;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         .link {
@@ -64,14 +56,14 @@
             margin: 20px 0;
             padding: 15px;
             text-decoration: none;
-            color: #544a46;
+            color: #2f3e46;
             background: #f2f2f2;
             border-radius: 30px;
             font-size: 18px;
             transition: all 0.3s;
         }
         .link:hover {
-            background: #cccccc;
+            background: #f5ebe0;
             transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -93,7 +85,7 @@
             transition: all 0.3s ease;
         }
         .location-widget:hover {
-            background: #cccccc;
+            background: #f5ebe0;
             transform: translateY(-5px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -102,7 +94,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            color: #544a46;
+            color: #2f3e46;
             font-size: 18px;
             margin-bottom: 20px;
             background: transparent;
@@ -122,7 +114,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Добре дошли в <br> Reform It Studio!</h1>
+        <h1>Добре дошли в <br><br> Reform It Studio <br> Link Tree</h1>
         <div class="divider"></div>
         <a href="https://www.instagram.com/reformit.studio/?utm_source=ig_web_button_share_sheet" class="link" target="_blank">
             <i class="fab fa-instagram social-icon"></i>
@@ -136,7 +128,7 @@
             <i class="fas fa-calendar social-icon"></i>
             Запазете час
         </a>
-        <a href="YOUR_SITE_URL" class="link" target="_blank">
+        <a href="coming_soon" class="link" target="_blank">
             <i class="fas fa-globe social-icon"></i>
             Coming soon
         </a>
@@ -172,15 +164,6 @@
         map.on('click', function() {
             window.open('https://maps.app.goo.gl/5ia6WprhepGehJAa8', '_blank');
         });
-        // Set the actual viewport height dynamically
-        function setDynamicHeight() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
-    
-        // Run on load and resize
-        window.addEventListener('load', setDynamicHeight);
-        window.addEventListener('resize', setDynamicHeight);
     </script>
 </body>
 </html>
