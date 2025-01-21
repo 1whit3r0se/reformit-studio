@@ -9,28 +9,21 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
+        body {
             font-family: 'Georgia', serif;
-            overflow-x: hidden;
-        }
-        .parallax {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
             background-image: url('images/473445597_1005504841401803_4171655916964070494_n.jpg');
-            height: 100%;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
             background-size: cover;
-        }
-        .content {
-            position: relative;
-            background-color: rgba(245, 235, 224, 0.7);
-            padding: 50px 0;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
         .container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 50px auto;
             padding: 30px;
             background: rgba(165,165,165, 0.7);
             border-radius: 15px;
@@ -79,7 +72,7 @@
         }
         .location-widget:hover {
             background: #cccccc;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .location-button {
@@ -106,54 +99,44 @@
     </style>
 </head>
 <body>
-    <div class="parallax"></div>
-    <div class="content">
-        <div class="container">
-            <h1>Добре дошли в <br> Reform It Studio!</h1>
-            <div class="divider"></div>
-            <a href="https://www.instagram.com/reformit.studio/?utm_source=ig_web_button_share_sheet" class="link" target="_blank">
-                <i class="fab fa-instagram social-icon"></i>
-                Instagram
+    <div class="container">
+        <h1>Добре дошли в <br> Reform It Studio!</h1>
+        <div class="divider"></div>
+        <a href="https://www.instagram.com/reformit.studio/?utm_source=ig_web_button_share_sheet" class="link" target="_blank">
+            <i class="fab fa-instagram social-icon"></i>
+            Instagram
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61571177870054&locale=bg_BG" class="link" target="_blank">
+            <i class="fab fa-facebook social-icon"></i>
+            Facebook
+        </a>
+        <a href="https://cal.com/reform-it-studio/60-min-pilates?date=2025-01-21&month=2025-01" class="link" target="_blank">
+            <i class="fas fa-calendar social-icon"></i>
+            Запазете час
+        </a>
+        <a href="YOUR_SITE_URL" class="link" target="_blank">
+            <i class="fas fa-globe social-icon"></i>
+            Coming soon
+        </a>
+        <div class="divider"></div>
+        <div class="location-widget">
+            <a href="https://maps.app.goo.gl/5ia6WprhepGehJAa8" class="location-button" target="_blank">
+                <i class="fa-solid fa-map-location-dot social-icon"></i>
+                Нашата локация
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61571177870054&locale=bg_BG" class="link" target="_blank">
-                <i class="fab fa-facebook social-icon"></i>
-                Facebook
-            </a>
-            <a href="https://cal.com/reform-it-studio/60-min-pilates?date=2025-01-21&month=2025-01" class="link" target="_blank">
-                <i class="fas fa-calendar social-icon"></i>
-                Запазете час
-            </a>
-            <a href="YOUR_SITE_URL" class="link" target="_blank">
-                <i class="fas fa-globe social-icon"></i>
-                Coming soon
-            </a>
-            <div class="divider"></div>
-            <div class="location-widget">
-                <a href="https://maps.app.goo.gl/5ia6WprhepGehJAa8" class="location-button" target="_blank">
-                    <i class="fa-solid fa-map-location-dot social-icon"></i>
-                    Нашата локация
-                </a>
-                <div class="map-container">
-                    <div id="map"></div>
-                </div>
+            <div class="map-container">
+                <div id="map"></div>
             </div>
         </div>
     </div>
     <script>
-        var map = L.map('map').setView([42.6977, 23.3219], 15);
+        var map = L.map('map').setView([42.698063, 23.351293], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-        L.marker([42.6977, 23.3219]).addTo(map)
+        L.marker([42.698063, 23.351293]).addTo(map)
             .bindPopup('Reform It Studio')
             .openPopup();
-
-        // Parallax effect
-        window.addEventListener('scroll', function() {
-            var scrolled = window.pageYOffset;
-            var parallax = document.querySelector(".parallax");
-            parallax.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
-        });
     </script>
 </body>
 </html>
