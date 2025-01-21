@@ -16,7 +16,7 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            height: max-content;
+            height: calc(var(--vh, 1vh) * 100); /* Use dynamically set height */
             background-image: url('images/IMG-9d49ac5b1747120e4b440866c6243b5b-V.jpg');
             background-size: cover;
             background-position: center;
@@ -165,6 +165,15 @@
         map.on('click', function() {
             window.open('https://maps.app.goo.gl/5ia6WprhepGehJAa8', '_blank');
         });
+        // Set the actual viewport height dynamically
+        function setDynamicHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+    
+        // Run on load and resize
+        window.addEventListener('load', setDynamicHeight);
+        window.addEventListener('resize', setDynamicHeight);
     </script>
 </body>
 </html>
