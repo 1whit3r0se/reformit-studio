@@ -7,15 +7,20 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #1a1a1a;
-            color: #ffffff;
             margin: 0;
             padding: 0;
-            background-image: url('images/IMG-9d49ac5b1747120e4b440866c6243b5b-V.jpg');
+            color: #ffffff;
+            background-color: #1a1a1a;
+        }
+        .background-wrapper {
+            background-image: url('images/background-reformers.jfif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: scroll;
+            max-width: 1200 px; /* Adjust this value to control the width of the background */
+            margin: 0 auto;
+            min-height: 100vh;
         }
         .container {
             max-width: 600px;
@@ -145,6 +150,7 @@
     </style>
 </head>
 <body>
+ <div class="background-wrapper">
     <div class="container">
         <div class="content-box">
             <div class="checkmark"></div>
@@ -188,6 +194,7 @@
             <span>Посетете нашия Link Tree</span>
         </button>
     </div>
+ </div>
 
     <script>
         // Parse URL parameters
