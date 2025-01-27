@@ -12,11 +12,11 @@
             margin: 0;
             padding: 0;
             background-image: url('images/IMG-9d49ac5b1747120e4b440866c6243b5b-V.jpg');
-            background-size: contain;
-            background-position: center top;
+            background-size: cover;
+            background-position: 50% 40%; /* Adjust this value to position the text where needed */
             background-repeat: no-repeat;
-            background-color: #1a1a1a; /* Fallback color */
             background-attachment: scroll;
+            min-height: 100vh;
         }
         .container {
             max-width: 600px;
@@ -146,7 +146,7 @@
         @media (max-width: 768px) {
             body {
                 background-size: 200% auto;
-                background-position: center 20%;
+                background-position: 50% 30%; /* Adjust for mobile to ensure text visibility */
             }
         }
     </style>
