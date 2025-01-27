@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Потвърждение за среща</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .checkmark {
+            width: 60px;
+            height: 60px;
+            background-color: #2e7d32;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+        }
+        .checkmark::after {
+            content: "✓";
+            font-size: 32px;
+            color: white;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+        .subtitle {
+            color: #999;
+            margin-bottom: 40px;
+        }
+        .details {
+            text-align: left;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        .detail-row {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .detail-label {
+            width: 100px;
+            color: #999;
+        }
+        .detail-content {
+            flex: 1;
+        }
+        .host-badge {
+            background-color: #3d5afe;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="checkmark"></div>
+        <h1>Тази среща е планирана</h1>
+        <p class="subtitle">Изпратихме имейл с покана за календара с детайлите до всички.</p>
+        
+        <div class="details">
+            <div class="detail-row">
+                <div class="detail-label">Какво</div>
+                <div class="detail-content" id="eventTitle"></div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Кога</div>
+                <div class="detail-content" id="eventDateTime"></div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Кой</div>
+                <div class="detail-content" id="eventAttendees"></div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Къде</div>
+                <div class="detail-content" id="eventLocation"></div>
+            </div>
+            
+            <div class="detail-row">
+                <div class="detail-label">Телефон</div>
+                <div class="detail-content" id="eventPhone"></div>
+            </div>
+        </div>
+        
+        <button class="button" onclick="redirectToLinkTree()">Посетете нашия Link Tree</button>
+    </div>
+
+    <script>
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Function to decode URI component and handle special characters
+        function decodeParam(param) {
+            return param ? decodeURIComponent(param.replace(/\+/g, ' ')) : '';
+        }
+
+        // Format date and time for Bulgarian locale
+        function formatDateTime(startTime, endTime) {
+            const start = new Date(startTime);
+            const end = new Date(endTime);
+            
+            const dateOptions = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric'
+            };
+            
+            const timeOptions = {
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: 'Europe/Sofia'
+            };
+
+            const dateStr = start.toLocaleDateString('bg-BG', dateOptions);
+            const startTimeStr = start.toLocaleTimeString('bg-BG', timeOptions);
+            const endTimeStr = end.toLocaleTimeString('bg-BG', timeOptions);
+            
+            return `${dateStr}<br>${startTimeStr} - ${endTimeStr} (Източно европейско време)`;
+        }
+
+        // Populate the page with URL parameters
+        document.getElementById('eventTitle').textContent = decodeParam(urlParams.get('title'));
+        
+        document.getElementById('eventDateTime').innerHTML = formatDateTime(
+            urlParams.get('startTime'),
+            urlParams.get('endTime')
+        );
+
+        // Format attendees section
+        const hostName = decodeParam(urlParams.get('hostName'));
+        const attendeeName = decodeParam(urlParams.get('attendeeName'));
+        const email = decodeParam(urlParams.get('email'));
+        
+        document.getElementById('eventAttendees').innerHTML = `
+            ${hostName} <span class="host-badge">Домакин</span><br>
+            studio.reformit@gmail.com<br><br>
+            ${attendeeName}<br>
+            ${email}
+        `;
+
+        document.getElementById('eventLocation').textContent = decodeParam(urlParams.get('location'));
+        document.getElementById('eventPhone').textContent = decodeParam(urlParams.get('phone'));
+
+        function redirectToLinkTree() {
+            window.location.href = 'https://reformit-linktree.vercel.app';
+        }
+    </script>
+</body>
+</html>
