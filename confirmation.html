@@ -15,11 +15,23 @@
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            background-image: url('images/IMG-9d49ac5b1747120e4b440866c6243b5b-V.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         .container {
             max-width: 600px;
             width: 100%;
             text-align: center;
+        }
+        .content-box {
+            background-color: rgba(26, 26, 26, 0.85);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
         }
         .checkmark {
             width: 60px;
@@ -47,7 +59,7 @@
         }
         .details {
             text-align: left;
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding-top: 20px;
             margin-top: 20px;
         }
@@ -77,7 +89,10 @@
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             font-size: 16px;
             margin-top: 20px;
             cursor: pointer;
@@ -87,42 +102,66 @@
         .button:hover {
             background-color: #45a049;
         }
+        .divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 20px 0;
+        }
+        .note {
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="checkmark"></div>
-        <h1>Тази среща е планирана</h1>
-        <p class="subtitle">Изпратихме имейл с покана за календара с детайлите до всички.</p>
-        
-        <div class="details">
-            <div class="detail-row">
-                <div class="detail-label">Какво</div>
-                <div class="detail-content" id="eventTitle"></div>
-            </div>
+        <div class="content-box">
+            <div class="checkmark"></div>
+            <h1 id="welcomeTitle"></h1>
+            <p class="subtitle">Изпратихме имейл с покана за календара с детайлите до всички.</p>
             
-            <div class="detail-row">
-                <div class="detail-label">Кога</div>
-                <div class="detail-content" id="eventDateTime"></div>
+            <div class="details">
+                <div class="detail-row">
+                    <div class="detail-label">Какво</div>
+                    <div class="detail-content" id="eventTitle"></div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Кога</div>
+                    <div class="detail-content" id="eventDateTime"></div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Кой</div>
+                    <div class="detail-content" id="eventAttendees"></div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Къде</div>
+                    <div class="detail-content" id="eventLocation"></div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Телефон</div>
+                    <div class="detail-content" id="eventPhone"></div>
+                </div>
             </div>
-            
-            <div class="detail-row">
-                <div class="detail-label">Кой</div>
-                <div class="detail-content" id="eventAttendees"></div>
-            </div>
-            
-            <div class="detail-row">
-                <div class="detail-label">Къде</div>
-                <div class="detail-content" id="eventLocation"></div>
-            </div>
-            
-            <div class="detail-row">
-                <div class="detail-label">Телефон</div>
-                <div class="detail-content" id="eventPhone"></div>
-            </div>
+
+            <div class="divider"></div>
+            <p class="note">
+                Ако желаете да промените или отмените своя час, моля, свържете се с нас на телефон: +359 898 466 442
+            </p>
         </div>
         
-        <button class="button" onclick="redirectToLinkTree()">Посетете нашия Link Tree</button>
+        <button class="button" onclick="redirectToLinkTree()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Посетете нашия Link Tree
+        </button>
     </div>
 
     <script>
@@ -159,6 +198,11 @@
             return `${dateStr}<br>${startTimeStr} - ${endTimeStr} (Източно европейско време)`;
         }
 
+        // Get attendee name and set welcome title
+        const attendeeName = decodeParam(urlParams.get('attendeeName'));
+        document.getElementById('welcomeTitle').textContent = 
+            `Благодарим Ви, ${attendeeName}! Вашият час за пилатес е успешно запазен.`;
+
         // Populate the page with URL parameters
         document.getElementById('eventTitle').textContent = decodeParam(urlParams.get('title'));
         
@@ -169,7 +213,6 @@
 
         // Format attendees section
         const hostName = decodeParam(urlParams.get('hostName'));
-        const attendeeName = decodeParam(urlParams.get('attendeeName'));
         const email = decodeParam(urlParams.get('email'));
         
         document.getElementById('eventAttendees').innerHTML = `
